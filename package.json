@@ -13,5 +13,6 @@
     "release-it": "^17.10.0"
   },
   "dependencies": {
+    "dotenv-cli": "^7.4.2"
   }
 }
