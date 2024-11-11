@@ -11,7 +11,7 @@
     "tagAnnotation": "Release v${version}",
     "addUntrackedFiles": false,
     "pushArgs": ["--follow-tags"],
-    "pushRepo": "git@github.com:developmentseed/release-test.git",
+    "pushRepo": "git@github.com:hanbyul-here/release-test.git",
     "getLatestTagFromAllRefs": false
   },
   "npm": {
