@@ -6,13 +6,12 @@
   "author": "Hanbyul Jo <hanbyul@nyu.edu>",
   "license": "MIT",
   "scripts": {
-    "release": "dotenv release-it"
+    "release": "dotenv release-it --"
   },
   "devDependencies": {
-    "dotenv": "^16.4.5",
+    "dotenv-cli": "^7.4.2",
     "release-it": "^17.10.0"
   },
   "dependencies": {
-    "dotenv-cli": "^7.4.2"
   }
 }
