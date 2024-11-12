@@ -1,1 +1,6 @@
-console.log('Doing something')
+
+function doSomething() {
+  console.log('I did something')
+}
+
+doSomething();
