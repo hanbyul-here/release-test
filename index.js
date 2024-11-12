@@ -1,5 +1,5 @@
 function doSomething () {
-  console.log('I did something')
+  console.log('I did something - that is not compatiable anymore.')
 }
 
 function doAnotherThing () {
