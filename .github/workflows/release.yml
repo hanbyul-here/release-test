@@ -25,21 +25,10 @@ jobs:
           cache: 'yarn'
       - name: Install dependencies
         run: yarn
-  weekindex:
-    needs: prep
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check if this is an "every other Monday"
-        run: |
-          WEEK_NUM=$(date +%U)
-          echo "weekindex=$((10#$WEEK_NUM % 2))" >> "$GITHUB_OUTPUT"
-          echo "Current week number is: $WEEK_NUM"
   release:
-    if: ${{ needs.weekindex.outputs.weekindex == 0 }}  
     runs-on: ubuntu-latest
     needs:
       - prep
-      - weekindex
     steps:
       - name: Release package
         run: yarn release --ci
