@@ -30,7 +30,7 @@ jobs:
         id: check
         run: |
           WEEK_NUM=$(date +%U)
-          if [ $((10#$WEEK_NUM % 2)) -eq 0 ]; then
+          if [ $((10#$WEEK_NUM % 2)) -eq 1 ]; then
             echo "Current week number is: $WEEK_NUM"
 
             echo "This is not an odd week: $WEEK_NUM, skipping release."
