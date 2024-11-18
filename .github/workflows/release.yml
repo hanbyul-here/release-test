@@ -7,10 +7,8 @@ name: Release Every Other Monday
 #     - cron: '0 10 * * 1'
 
 on:
-  push:
-    branches:
-    - main
-
+  pull_request:
+    types: [opened, synchronize, reopened]
 env:
   NODE: 20
 
@@ -33,7 +31,9 @@ jobs:
         run: |
           WEEK_NUM=$(date +%U)
           if [ $((10#$WEEK_NUM % 2)) -eq 0 ]; then
-            echo "This is not an odd week, skipping release."
+            echo "Current week number is: $WEEK_NUM"
+
+            echo "This is not an odd week: $WEEK_NUM, skipping release."
             exit 0
           fi
 
