@@ -30,6 +30,10 @@ jobs:
         run: yarn
       - name: Run something
         run: yarn dosomething
+      - name: Initialize GitHub User
+        run: |
+            git config --global user.email "hanbyul@nyu.edu"
+            git config --global user.name "Hanbyul Jo"
       - name: Release package
         run: yarn release --ci
         env:
