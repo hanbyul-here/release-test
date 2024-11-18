@@ -19,7 +19,7 @@ jobs:
           fetch-depth: 0
       - name: git config
         run: |
-          git remote -v
+          git remote set-url origin git@github.com:hanbyul-here/release-test.git
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
       - run: npm install
