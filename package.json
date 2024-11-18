@@ -6,6 +6,7 @@
   "author": "Hanbyul Jo <hanbyul@nyu.edu>",
   "license": "MIT",
   "scripts": {
+    "dosomething": "node index.js",
     "release": "dotenv release-it --"
   },
   "devDependencies": {

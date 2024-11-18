@@ -50,7 +50,13 @@ jobs:
           WEEK_NUM=$(date +%U)
           echo "weekindex=$((10#$WEEK_NUM % 2))" >> "$GITHUB_OUTPUT"
           echo "Current week number is: $WEEK_NUM"
-  
+  check:
+    needs: weekindex
+    runs-on: ubuntu-latest
+    steps:
+      - name: Just run something
+        run: yarn dosomething
+
   release:
     if: ${{ needs.weekindex.outputs.weekindex == 0 }}  
     runs-on: ubuntu-latest
