@@ -13,7 +13,7 @@ env:
   NODE: 20
 
 jobs:
-  release:
+  weekindex:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -30,15 +30,15 @@ jobs:
         id: check
         run: |
           WEEK_NUM=$(date +%U)
-          if [ $((10#$WEEK_NUM % 2)) -eq 1 ]; then
-            echo "Current week number is: $WEEK_NUM"
-
-            echo "This is not an odd week: $WEEK_NUM, skipping release."
-            exit 0
-          fi
-
-      - name: Run Yarn Release
-        if: steps.check.outputs.result != '0'
+          echo "weekindex=$WEEK_NUM" >> "$GITHUB_OUTPUT"
+          echo "Current week number is: $WEEK_NUM"
+  release:
+    if: ${{ needs.weekindex.outputs.weekindex == 0 }}  
+    runs-on: ubuntu-latest
+    needs:
+      - weekindex
+    steps:
+      - name: release package
         run: yarn release
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
