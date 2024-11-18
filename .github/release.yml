@@ -1,0 +1,37 @@
+name: Release Every Other Monday
+
+on:
+  schedule:
+    # Run the action every Monday at 10:00 AM UTC
+    - cron: '0 10 * * 1'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Check if this is an "every other Monday"
+        id: check
+        run: |
+          # Check if the current week of the year is odd (every other Monday)
+          WEEK_NUM=$(date +%U)
+          if [ $(( WEEK_NUM % 2 )) -ne 1 ]; then
+            echo "This is not an odd week, skipping release."
+            exit 0
+          fi
+
+      - name: Run Yarn Release
+        if: steps.check.outputs.result != '0'
+        run: yarn release
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
