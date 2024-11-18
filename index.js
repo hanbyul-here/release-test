@@ -1,9 +1,9 @@
 function doSomething () {
-  console.log('I did something - that is not compatiable anymore.')
+  console.log('I did something - that is not compatible anymore.')
 }
 
 function doAnotherThing () {
-  console.log('I did another thing')
+  console.log('I did another thing - this is not compatible either')
 }
 
 function doMultipleThings () {
