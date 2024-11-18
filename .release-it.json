@@ -8,18 +8,7 @@
     }
   },
   "git": {
-    "changelog": "git log --pretty=format:\"* %s (%h)\" ${from}...${to}",
-    "requireCleanWorkingDir": false,
-    "requireBranch": "main",
-    "requireUpstream": true,
-    "requireCommits": false,
-    "commitMessage": "chore(release): update to version v${version}",
-    "tagName": "v${version}",
-    "tagAnnotation": "Release v${version}",
-    "addUntrackedFiles": false,
-    "pushArgs": ["--follow-tags"],
-    "pushRepo": "git@github.com:hanbyul-here/release-test.git",
-    "getLatestTagFromAllRefs": false
+    "changelog": "git log --pretty=format:\"* %s (%h)\" ${from}...${to}"
   },
   "npm": {
     "publish": false
@@ -30,18 +19,6 @@
     "releaseNotes": null,
     "autoGenerate": true,
     "preRelease": false,
-    "draft": true,
-    "tokenRef": "GITHUB_TOKEN",
-    "assets": null,
-    "host": null,
-    "timeout": 0,
-    "proxy": null,
-    "skipChecks": false,
-    "web": false,
-    "comments": {
-      "submit": false,
-      "issue": ":rocket: _This issue has been resolved in v${version}. See [${releaseName}](${releaseUrl}) for release notes._",
-      "pr": ":rocket: _This pull request is included in v${version}. See [${releaseName}](${releaseUrl}) for release notes._"
-    }
+    "draft": true
   }
 }

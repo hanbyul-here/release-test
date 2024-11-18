@@ -11,6 +11,8 @@ on:
 jobs:
   # Single deploy job since we're just deploying
   runsomething:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
