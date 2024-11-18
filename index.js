@@ -11,4 +11,8 @@ function doMultipleThings () {
   console.log('Do more thing')
 }
 
+function moreFeature() {
+  console.log('new minor release')
+}
+
 doSomething();
