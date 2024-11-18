@@ -19,6 +19,6 @@
     "releaseNotes": null,
     "autoGenerate": true,
     "preRelease": false,
-    "draft": true
+    "draft": false
   }
 }
