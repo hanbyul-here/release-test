@@ -28,13 +28,12 @@ jobs:
 
       - name: Install dependencies
         run: yarn install
-
       - name: Check if this is an "every other Monday"
         id: check
         run: |
           # Check if the current week of the year is odd (every other Monday)
           WEEK_NUM=$(date +%U)
-          if [ $(( WEEK_NUM % 2 )) -ne 1 ]; then
+          if [ $(( WEEK_NUM % 2 )) -ne 0 ]; then
             echo "This is not an odd week, skipping release."
             exit 0
           fi
