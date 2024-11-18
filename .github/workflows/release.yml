@@ -60,4 +60,4 @@ jobs:
       - name: Release package
         run: yarn release --ci
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
