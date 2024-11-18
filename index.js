@@ -15,4 +15,8 @@ function moreFeature() {
   console.log('new minor release')
 }
 
+function moreMoreFeature() {
+  console.log('another new minor release')
+}
+
 doSomething();
