@@ -1,15 +1,10 @@
 name: Release Every Other Monday
 
-
-# Run the action every Monday at 10:00 AM UTC
-# on:
-#   schedule:
-#     - cron: '0 10 * * 1'
-
 on:
   push:
     branches:
-    - 'main'
+      - 'main'
+  workflow_dispatch:
 
 env:
   NODE: 20
@@ -25,21 +20,27 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Use Node.js 20
         uses: actions/setup-node@v3
         with:
           node-version: 20
 
+      - name: Install
+        run: yarn
+
       - name: Cache node_modules
         uses: actions/cache@v3
         id: cache-node-modules
         with:
           path: node_modules
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package.json') }}
+          key: ${{ runner.os }}-build-${{ hashFiles('**/package.json') }}
+      
+      - name: List Files
+        run: ls -la
 
-      - name: Install
-        run: yarn
   weekindex:
     needs: prep
     runs-on: ubuntu-latest
@@ -49,13 +50,14 @@ jobs:
           WEEK_NUM=$(date +%U)
           echo "weekindex=$((10#$WEEK_NUM % 2))" >> "$GITHUB_OUTPUT"
           echo "Current week number is: $WEEK_NUM"
+  
   release:
     if: ${{ needs.weekindex.outputs.weekindex == 0 }}  
     runs-on: ubuntu-latest
     needs:
       - weekindex
     steps:
-      - name: release package
+      - name: Release package
         run: yarn release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
