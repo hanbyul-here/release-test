@@ -31,7 +31,7 @@
     "autoGenerate": true,
     "preRelease": false,
     "draft": true,
-    "tokenRef": "GH_TOKEN",
+    "tokenRef": "GITHUB_TOKEN",
     "assets": null,
     "host": null,
     "timeout": 0,
