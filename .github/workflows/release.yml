@@ -6,41 +6,25 @@ on:
       - 'main'
   workflow_dispatch:
 
-env:
-  NODE: 20
+# Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   prep:
     runs-on: ubuntu-latest
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.9.1
-        with:
-          access_token: ${{ github.token }}
-
       - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: Use Node.js 20
+        uses: actions/checkout@v4
+      - name: Set up Node
         uses: actions/setup-node@v3
         with:
           node-version: 20
-
-      - name: Install
+          cache: 'yarn'
+      - name: Install dependencies
         run: yarn
-
-      - name: Cache node_modules
-        uses: actions/cache@v3
-        id: cache-node-modules
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-build-${{ hashFiles('**/package.json') }}
-      
-      - name: List Files
-        run: ls -la
-
   weekindex:
     needs: prep
     runs-on: ubuntu-latest
