@@ -7,8 +7,4 @@
  ```
  git push --set-upstream origin main  
  ```
-
-### SSH Key
-
-
- Some change
+Some change
