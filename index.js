@@ -6,4 +6,9 @@ function doAnotherThing () {
   console.log('I did another thing')
 }
 
+function doMultipleThings () {
+  console.log('Do one thing')
+  console.log('Do more thing')
+}
+
 doSomething();
