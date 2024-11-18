@@ -27,6 +27,8 @@ jobs:
         run: yarn
       - name: Initialize GitHub User
         run: |
+          git remote add origin git@github.com:hanbyul-here/release-test.git
+          git push --set-upstream origin main
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
       - name: Run something
