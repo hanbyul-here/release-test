@@ -30,7 +30,7 @@ jobs:
         id: check
         run: |
           WEEK_NUM=$(date +%U)
-          echo "weekindex=$WEEK_NUM" >> "$GITHUB_OUTPUT"
+          echo "weekindex=$((10#$WEEK_NUM % 2))" >> "$GITHUB_OUTPUT"
           echo "Current week number is: $WEEK_NUM"
   release:
     if: ${{ needs.weekindex.outputs.weekindex == 0 }}  
