@@ -38,6 +38,7 @@ jobs:
     if: ${{ needs.weekindex.outputs.weekindex == 0 }}  
     runs-on: ubuntu-latest
     needs:
+      - prep
       - weekindex
     steps:
       - name: Release package
