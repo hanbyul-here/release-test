@@ -41,6 +41,7 @@ jobs:
       - name: Install
         run: yarn
   weekindex:
+    needs: prep
     runs-on: ubuntu-latest
     steps:
       - name: Check if this is an "every other Monday"
