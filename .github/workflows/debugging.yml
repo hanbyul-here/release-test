@@ -22,9 +22,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-          # The Checkout actions at v2 and beyond prevent pushes as another user due to persist-credentials being set to true by default
-          persist-credentials: false
+          token: ${{ secrets.GH_TOKEN }}
       - name: Set up Node
         uses: actions/setup-node@v3
         with:
