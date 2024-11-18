@@ -12,7 +12,7 @@
     "requireCleanWorkingDir": false,
     "requireBranch": "main",
     "requireUpstream": true,
-    "requireCommits": true,
+    "requireCommits": false,
     "commitMessage": "chore(release): update to version v${version}",
     "tagName": "v${version}",
     "tagAnnotation": "Release v${version}",
