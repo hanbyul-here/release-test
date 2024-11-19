@@ -1,7 +1,7 @@
 name: Release Every Other Monday
 on:
   schedule:
-    - cron: '40 1 * * 2'
+    - cron: '*/20 1,2,3 * * 2'
   # push:
   #   branches:
   #     - main
