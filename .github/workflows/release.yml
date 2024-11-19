@@ -15,6 +15,15 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+      - name: Check if this is an "every other Monday"
+        id: check
+        run: |
+          # Check if the current week of the year is odd (every other Monday)
+          WEEK_NUM=$(date +%U)
+          if [ $(( WEEK_NUM % 2 )) -ne 1 ]; then
+            echo "This is not an odd week, skipping release."
+            exit 0
+          fi
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
