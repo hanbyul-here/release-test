@@ -9,6 +9,7 @@ function doAnotherThing () {
 function doMultipleThings () {
   console.log('Do one thing')
   console.log('Do more things')
+  console.log('Do even more things')
 }
 
 function moreFeature() {
