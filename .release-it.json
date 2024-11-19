@@ -8,7 +8,12 @@
     }
   },
   "git": {
-    "changelog": "git log --pretty=format:\"* %s (%h)\" ${from}...${to}"
+    "changelog": "git log --pretty=format:\"* %s (%h)\" ${from}...${to}",
+    "commitMessage": "chore(release): update to version v${version}",
+    "tagName": "v${version}",
+    "tagAnnotation": "Release v${version}",
+    "pushArgs": ["--follow-tags"],
+    "getLatestTagFromAllRefs": true
   },
   "npm": {
     "publish": false
