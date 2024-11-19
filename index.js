@@ -24,3 +24,4 @@ function moreFeature() {
 }
 
 doSomething();
+moreFeature();
