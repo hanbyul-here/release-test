@@ -12,6 +12,10 @@ function doMultipleThings () {
   console.log('Do even more things')
 }
 
+function featureToTest() {
+  console.log('feature to test')
+}
+
 function moreFeature() {
   console.log('new minor release')
 }
