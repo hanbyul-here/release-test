@@ -7,14 +7,10 @@
   "license": "MIT",
   "scripts": {
     "dosomething": "node index.js",
-    "release": "dotenv release-it --"
+    "release": "release-it --"
   },
   "devDependencies": {
-    "dotenv-cli": "^7.4.2",
-    "release-it": "^17.10.0"
-  },
-  "dependencies": {
-    "@release-it/conventional-changelog": "^9.0.3",
-    "d3": "^7.9.0"
+    "release-it": "^17.10.0",
+    "@release-it/conventional-changelog": "^9.0.3"
   }
 }
