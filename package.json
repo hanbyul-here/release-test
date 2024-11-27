@@ -1,6 +1,6 @@
 {
   "name": "release-test",
-  "version": "2.9.12",
+  "version": "2.9.13",
   "main": "index.js",
   "repository": "git@github.com:developmentseed/release-test.git",
   "author": "Hanbyul Jo <hanbyul@nyu.edu>",
