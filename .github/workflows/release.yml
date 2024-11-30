@@ -28,10 +28,8 @@ jobs:
       - name: release
         id: release
         run: |
-          VERSION=$(yarn release --release-version)
-          echo "Latest version: $VERSION"
-          echo "::set-output name=version::$VERSION"
           yarn release --ci
+          printf '%s\n' "$VERSION_NUMBER"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Repository Dispatch
@@ -41,4 +39,4 @@ jobs:
           token: ${{ secrets.RELEASE_GH_TOKEN }}
           repository: hanbyul-here/release-trigger-test
           event-type: update-version
-          client-payload: '{"version": "${{ steps.release.outputs.version }}"}'
+          client-payload: '{"version": "$VERSION_NUMBER"}'
