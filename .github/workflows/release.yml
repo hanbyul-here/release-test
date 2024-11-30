@@ -27,9 +27,7 @@ jobs:
       - run: yarn
       - name: release
         id: release
-        run: |
-          yarn release --ci
-          printf '%s\n' "$VERSION_NUMBER"
+        run: yarn release --ci
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Repository Dispatch
