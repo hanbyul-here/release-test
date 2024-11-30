@@ -37,4 +37,4 @@ jobs:
           token: ${{ secrets.RELEASE_GH_TOKEN }}
           repository: hanbyul-here/release-trigger-test
           event-type: update-version
-          client-payload: '{"ref": "${{ github.ref }}", "version": "$VERSION_NUMBER"}'
+          client-payload: '{"ref": "${{ github.ref }}", "VERSION_NUMBER": "$VERSION_NUMBER"}'
