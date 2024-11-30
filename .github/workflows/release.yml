@@ -25,6 +25,18 @@ jobs:
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
       - run: yarn
-      - run: yarn release  --ci --verbose
+      - name: release
+        id: release
+        run: |
+          echo "VERSION_NUMBER = yarn release --version-number" >> $GITHUB_OUTPUT
+          yarn release  --ci --verbose
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          # To trigger the action from the same repo, cross-repo needs PAT 
+          token: ${{ secrets.RELEASE_GH_TOKEN }} 
+          repository: hanbyul-here/release-trigger
+          event-type: update-version
+          client-payload: '{"version": "${{ steps.release.outputs.VERSION_NUMBER }}"}'
