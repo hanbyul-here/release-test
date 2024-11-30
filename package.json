@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dosomething": "node index.js",
-    "release": "release-it -- --ci"
+    "release": "release-it --"
   },
   "devDependencies": {
     "release-it": "^17.10.0",
