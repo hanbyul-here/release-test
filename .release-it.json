@@ -1,5 +1,7 @@
 {
-  "hooks": {},
+  "hooks": {
+    "after:release:": "echo \"VERSION_NUMBER=v${version}\" >> \"$GITHUB_ENV\" "
+  },
   "plugins": {
     "@release-it/conventional-changelog": {
       "preset": {
@@ -20,7 +22,7 @@
   },
   "github": {
     "release": true,
-    "releaseName": "V${version}",
+    "releaseName": "v${version}",
     "releaseNotes": null,
     "autoGenerate": true,
     "preRelease": false,
