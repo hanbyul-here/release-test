@@ -30,11 +30,19 @@ jobs:
         run: yarn release --ci
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Generate a token
+        id: generate_token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PEM }}
+          owner: ${{ github.repository_owner }}
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v3
         with:
           # To trigger the action from the same repo, cross-repo needs PAT 
-          token: ${{ secrets.RELEASE_GH_TOKEN }}
+          # To do this in organization level: https://github.com/peter-evans/repository-dispatch/issues/270
+          token: ${{ steps.generate_token.outputs.token }}
           repository: hanbyul-here/release-trigger-test
           event-type: update-version
           client-payload: '{"ref": "${{ github.ref }}", "VERSION_NUMBER": "${{ env.VERSION_NUMBER }}"}'
