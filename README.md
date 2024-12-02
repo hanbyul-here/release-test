@@ -6,7 +6,10 @@
  
  ```
  git push --set-upstream origin main
+ export GITHUB_TOKEN=${YOUR_GITHUB_TOKEN}
  ```
+
+##
 
 ### GitHub Action related
 
@@ -17,3 +20,8 @@
   - Save the private SSH key in a DEPLOY_KEY secret
   - Add Deploy keys to the Bypass list of the rulesets (Bypass list > Add bypass > Deploy keys)
   - Make your action checkouts the repo using the SSH key from the secret
+
+### GitHub App Related
+
+Create GitHub App with  `contents: write, read`, `metadata: read` permissions
+Install the app to the repos
